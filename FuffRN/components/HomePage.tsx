@@ -2,10 +2,23 @@ import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
 import Menu from './Menu';
 import {useNavigation} from '@react-navigation/native';
-import Carousel from 'react-native-snap-carousel';
+import HeroCarousel from './HeroCarousel';
 
 const HomePage = () => {
   const {navigate} = useNavigation();
+
+  // Sample filler classes data
+  const popularClasses = [
+    {
+      title: "Aenean leo",
+    },
+    {
+      title: "In turpis",
+    },
+    {
+      title: "Lorem Ipsum",
+    },
+  ];
 
   return (
     <View style={styles.container}>
@@ -24,7 +37,7 @@ const HomePage = () => {
       </View>
       <View style={styles.heroContainer}>
         <Text style={styles.heroTitle}>Popular Classes</Text>
-        {/* Carousel with popular classes goes here */}
+        <HeroCarousel /> 
       </View>
       <View style={styles.buttonContainer}>
         <TouchableOpacity
@@ -103,8 +116,9 @@ const styles = StyleSheet.create({
     margin: 5,
   },
   buttonText: {
-    color: '#FFF',
+    color: '#000',
     fontSize: 16,
+    textAlign: 'center',
   },
   headcountContainer: {
     flexDirection: 'row',
@@ -114,6 +128,25 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 75,
     alignSelf: 'center',
+  },
+  carouselItem: {
+    backgroundColor: 'white',
+    borderRadius: 5,
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 10,
+    marginBottom: 10,
+  },
+  carouselImage: {
+    width: 180,
+    height: 100,
+    resizeMode: 'cover',
+    borderRadius: 5,
+  },
+  carouselTitle: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginTop: 5,
   },
 });
 

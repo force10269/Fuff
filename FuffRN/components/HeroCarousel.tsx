@@ -1,69 +1,80 @@
-import React from 'react';
-import {Dimensions, FlatList, StyleSheet, Text, View} from 'react-native';
+import React, {useState} from 'react';
+import {View, Text, StyleSheet, Dimensions} from 'react-native';
+import Carousel, {Pagination} from 'react-native-snap-carousel';
 
-type HeroCarouselItem<T> = {
-  item: T;
-  index: number;
-};
+interface CarouselItem {
+  title: string;
+}
 
-type HeroCarouselProps<T> = {
-  items: T[];
-  renderItem: (item: T) => JSX.Element;
-  title?: string;
-};
+interface HeroCarouselProps {
+  items?: CarouselItem[];
+}
 
-const HeroCarousel = <T extends {}>({
-  items,
-  renderItem,
-  title,
-}: HeroCarouselProps<T>): JSX.Element => {
-  const {width: windowWidth} = Dimensions.get('window');
-  const ITEM_WIDTH = windowWidth * 0.7;
-  const ITEM_MARGIN = (windowWidth - ITEM_WIDTH) / 2;
+const screenHeight = Dimensions.get('window').height;
+const carouselHeight = screenHeight * 0.3;
+
+const HeroCarousel: React.FC<HeroCarouselProps> = ({
+  items = [{title: 'Aenean leo'}, {title: 'In turpis'}, {title: 'Lorem Ipsum'}],
+}) => {
+  const [activeSlide, setActiveSlide] = useState(0);
+  const renderItem = ({item, index}: {item: CarouselItem; index: number}) => {
+    return (
+      <View style={styles.carouselItem}>
+        <Text style={styles.carouselTitle}>{item.title}</Text>
+      </View>
+    );
+  };
 
   return (
-    <View style={styles.container}>
-      {title && <Text style={styles.title}>{title}</Text>}
-      <FlatList
+    <>
+      <Carousel
         data={items}
-        keyExtractor={(item, index) => `${index}`}
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        snapToInterval={ITEM_WIDTH + ITEM_MARGIN * 2}
-        snapToAlignment="center"
-        contentContainerStyle={styles.carousel}
-        renderItem={({item, index}: HeroCarouselItem<T>) => (
-          <View
-            style={[
-              styles.itemContainer,
-              {
-                marginLeft: index === 0 ? ITEM_MARGIN : 0,
-                marginRight: index === items.length - 1 ? ITEM_MARGIN : 10,
-              },
-            ]}>
-            {renderItem(item)}
-          </View>
-        )}
+        renderItem={renderItem}
+        sliderWidth={Dimensions.get('window').width}
+        itemWidth={Dimensions.get('window').width * 0.6}
+        onSnapToItem={i => setActiveSlide(i)}
       />
-    </View>
+      <Pagination
+        dotsLength={items.length}
+        activeDotIndex={activeSlide}
+        containerStyle={styles.paginationContainer}
+        dotStyle={styles.paginationDot}
+        inactiveDotStyle={styles.paginationInactiveDot}
+        inactiveDotOpacity={0.4}
+        inactiveDotScale={0.6}
+      />
+    </>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    marginBottom: 20,
-  },
-  title: {
-    fontSize: 16,
-    fontWeight: '600',
+  carouselItem: {
+    backgroundColor: '#CFB87C',
+    height: carouselHeight,
+    borderRadius: 5,
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 10,
     marginBottom: 10,
   },
-  carousel: {
-    paddingHorizontal: 0,
+  carouselTitle: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#000',
+    textAlign: 'center',
   },
-  itemContainer: {
-    width: 'auto',
-    marginHorizontal: 5,
+  paginationContainer: {
+    paddingTop: 10,
+  },
+  paginationDot: {
+    width: 10,
+    height: 10,
+    borderRadius: 5,
+    marginHorizontal: 3,
+    backgroundColor: '#565A5C',
+  },
+  paginationInactiveDot: {
+    backgroundColor: '#A2A4A3',
   },
 });
 
