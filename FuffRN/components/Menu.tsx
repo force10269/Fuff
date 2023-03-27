@@ -7,7 +7,6 @@ import {
   Image,
   LayoutAnimation,
 } from 'react-native';
-import {Button} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
 const menuItems = [
@@ -68,21 +67,32 @@ const Menu = (): JSX.Element => {
     ));
 
   return (
-    <View style={styles.menuContainer}>
-      <View>
-        <View style={styles.halfOval}>
-          <TouchableOpacity onPress={handleMenuPress} style={styles.menuButton}>
-            <Image
-              source={require('./assets/menu-icon.png')}
-              style={styles.menuIcon}
-            />
-          </TouchableOpacity>
-        </View>
-      </View>
+    <>
       {isMenuOpen && (
-        <View style={styles.menuItemsContainer}>{renderMenuItems()}</View>
+        <View
+          style={styles.overlay}
+          onStartShouldSetResponder={() => true}
+          onResponderRelease={handleMenuPress}
+        />
       )}
-    </View>
+      <View style={styles.menuContainer}>
+        <View>
+          <View style={styles.halfOval}>
+            <TouchableOpacity
+              onPress={handleMenuPress}
+              style={styles.menuButton}>
+              <Image
+                source={require('./assets/menu-icon.png')}
+                style={styles.menuIcon}
+              />
+            </TouchableOpacity>
+          </View>
+        </View>
+        {isMenuOpen && (
+          <View style={styles.menuItemsContainer}>{renderMenuItems()}</View>
+        )}
+      </View>
+    </>
   );
 };
 
@@ -124,6 +134,15 @@ const styles = StyleSheet.create({
   },
   menuItemTitle: {
     fontSize: 16,
+  },
+  overlay: {
+    backgroundColor: 'rgba(0, 0, 0, 0.6)',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    zIndex: 1,
   },
 });
 

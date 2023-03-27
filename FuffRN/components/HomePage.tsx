@@ -10,13 +10,13 @@ const HomePage = () => {
   // Sample filler classes data
   const popularClasses = [
     {
-      title: "Aenean leo",
+      title: 'Aenean leo',
     },
     {
-      title: "In turpis",
+      title: 'In turpis',
     },
     {
-      title: "Lorem Ipsum",
+      title: 'Lorem Ipsum',
     },
   ];
 
@@ -37,7 +37,7 @@ const HomePage = () => {
       </View>
       <View style={styles.heroContainer}>
         <Text style={styles.heroTitle}>Popular Classes</Text>
-        <HeroCarousel /> 
+        <HeroCarousel />
       </View>
       <View style={styles.buttonContainer}>
         <TouchableOpacity
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: '#CFB87C',
-    width: 100,
+    width: 150,
     height: 100,
     borderRadius: 5,
     justifyContent: 'center',

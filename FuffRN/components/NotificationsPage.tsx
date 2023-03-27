@@ -28,35 +28,38 @@ const NOTIFICATIONS: Notification[] = [
 
 const NotificationsPage = (): JSX.Element => {
   return (
-    <ScrollView style={styles.container}>
-      <Text style={styles.title}>Notifications</Text>
-      <View style={styles.content}>
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Important Announcements</Text>
-          {NOTIFICATIONS.filter(n => n.type === 'alert').map(item => (
-            <View key={item.id} style={styles.notification}>
-              <Text style={styles.notificationTitle}>{item.title}</Text>
-              <Text style={styles.notificationMessage}>{item.message}</Text>
-            </View>
-          ))}
-          {NOTIFICATIONS.filter(n => n.type === 'alert').length === 0 && (
-            <Text style={styles.emptyMessage}>No alert notifications</Text>
-          )}
+    <>
+      <Menu />
+      <ScrollView style={styles.container}>
+        <Text style={styles.title}>Notifications</Text>
+        <View style={styles.content}>
+          <View style={styles.section}>
+            <Text style={styles.sectionTitle}>Important Announcements</Text>
+            {NOTIFICATIONS.filter(n => n.type === 'alert').map(item => (
+              <View key={item.id} style={styles.notification}>
+                <Text style={styles.notificationTitle}>{item.title}</Text>
+                <Text style={styles.notificationMessage}>{item.message}</Text>
+              </View>
+            ))}
+            {NOTIFICATIONS.filter(n => n.type === 'alert').length === 0 && (
+              <Text style={styles.emptyMessage}>No alert notifications</Text>
+            )}
+          </View>
+          <View style={styles.section}>
+            <Text style={styles.sectionTitle}>Your Upcoming Classes</Text>
+            {NOTIFICATIONS.filter(n => n.type === 'message').map(item => (
+              <View key={item.id} style={styles.notification}>
+                <Text style={styles.notificationTitle}>{item.title}</Text>
+                <Text style={styles.notificationMessage}>{item.message}</Text>
+              </View>
+            ))}
+            {NOTIFICATIONS.filter(n => n.type === 'message').length === 0 && (
+              <Text style={styles.emptyMessage}>No registered classes</Text>
+            )}
+          </View>
         </View>
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Your Upcoming Classes</Text>
-          {NOTIFICATIONS.filter(n => n.type === 'message').map(item => (
-            <View key={item.id} style={styles.notification}>
-              <Text style={styles.notificationTitle}>{item.title}</Text>
-              <Text style={styles.notificationMessage}>{item.message}</Text>
-            </View>
-          ))}
-          {NOTIFICATIONS.filter(n => n.type === 'message').length === 0 && (
-            <Text style={styles.emptyMessage}>No registered classes</Text>
-          )}
-        </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </>
   );
 };
 
