@@ -2,6 +2,7 @@ import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
 import Menu from './Menu';
 import {useNavigation} from '@react-navigation/native';
+import Carousel from 'react-native-snap-carousel';
 
 const HomePage = () => {
   const {navigate} = useNavigation();
@@ -94,8 +95,11 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: '#CFB87C',
-    padding: 10,
+    width: 100,
+    height: 100,
     borderRadius: 5,
+    justifyContent: 'center',
+    alignItems: 'center',
     margin: 5,
   },
   buttonText: {
@@ -107,6 +111,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     padding: 10,
+    position: 'absolute',
+    bottom: 75,
+    alignSelf: 'center',
   },
 });
 

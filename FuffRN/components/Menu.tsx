@@ -69,13 +69,15 @@ const Menu = (): JSX.Element => {
 
   return (
     <View style={styles.menuContainer}>
-      <View style={styles.menuBar}>
-        <TouchableOpacity onPress={handleMenuPress} style={styles.menuButton}>
-          <Image
-            source={require('./assets/menu-icon.png')}
-            style={styles.menuIcon}
-          />
-        </TouchableOpacity>
+      <View>
+        <View style={styles.halfOval}>
+          <TouchableOpacity onPress={handleMenuPress} style={styles.menuButton}>
+            <Image
+              source={require('./assets/menu-icon.png')}
+              style={styles.menuIcon}
+            />
+          </TouchableOpacity>
+        </View>
       </View>
       {isMenuOpen && (
         <View style={styles.menuItemsContainer}>{renderMenuItems()}</View>
@@ -92,23 +94,25 @@ const styles = StyleSheet.create({
     right: 0,
     zIndex: 1,
   },
-  menuBar: {
-    backgroundColor: '#fff',
-    borderTopColor: '#d2d2d2',
-    borderTopWidth: StyleSheet.hairlineWidth,
+  halfOval: {
+    width: '100%',
+    height: 50,
+    borderTopLeftRadius: 40,
+    borderTopRightRadius: 40,
+    borderColor: 'black',
+    backgroundColor: '#CFB87C',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   menuButton: {
     alignItems: 'center',
-    padding: 10,
   },
   menuIcon: {
     width: 30,
     height: 40,
   },
   menuItemsContainer: {
-    backgroundColor: '#fff',
-    borderTopColor: '#d2d2d2',
-    borderTopWidth: StyleSheet.hairlineWidth,
+    backgroundColor: '#CFB87C',
     paddingVertical: 10,
     alignItems: 'center',
     textAlign: 'center',
