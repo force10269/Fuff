@@ -2,6 +2,7 @@ import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import SearchBar from 'react-native-platform-searchbar';
 import {ScrollView} from 'react-native-gesture-handler';
+import Menu from './Menu';
 
 interface Props {}
 
@@ -13,30 +14,33 @@ const IntramuralsClubsPage: React.FC<Props> = () => {
   };
 
   return (
-    <ScrollView style={styles.container}>
-      <SearchBar
-        placeholder="Search Activities"
-        onChangeText={(text: string) => updateSearch(text)}
-        value={search}
-        inputStyle={styles.searchBarInput}
-      />
-      <Text style={styles.sectionTitle}>Ongoing</Text>
-      <View style={styles.cardContainer}>
-        {/* Sample card */}
-        <View style={styles.card}>
-          <Text style={styles.cardTitle}>Basketball Club</Text>
-          <Text style={styles.cardSubtitle}>Every Wednesday, 6pm</Text>
+    <>
+      <ScrollView style={styles.container}>
+        <SearchBar
+          placeholder="Search Activities"
+          onChangeText={(text: string) => updateSearch(text)}
+          value={search}
+          inputStyle={styles.searchBarInput}
+        />
+        <Text style={styles.sectionTitle}>Ongoing</Text>
+        <View style={styles.cardContainer}>
+          {/* Sample card */}
+          <View style={styles.card}>
+            <Text style={styles.cardTitle}>Basketball Club</Text>
+            <Text style={styles.cardSubtitle}>Every Wednesday, 6pm</Text>
+          </View>
         </View>
-      </View>
-      <Text style={styles.sectionTitle}>Upcoming</Text>
-      <View style={styles.cardContainer}>
-        {/* Sample card */}
-        <View style={styles.card}>
-          <Text style={styles.cardTitle}>Ultimate Frisbee League</Text>
-          <Text style={styles.cardSubtitle}>Starting in May</Text>
+        <Text style={styles.sectionTitle}>Upcoming</Text>
+        <View style={styles.cardContainer}>
+          {/* Sample card */}
+          <View style={styles.card}>
+            <Text style={styles.cardTitle}>Ultimate Frisbee League</Text>
+            <Text style={styles.cardSubtitle}>Starting in May</Text>
+          </View>
         </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
+      <Menu />
+    </>
   );
 };
 

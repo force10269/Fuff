@@ -53,12 +53,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     padding: 10,
+    paddingTop: 65,
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
     color: '#000',
-    paddingLeft: '42.5%',
+    paddingLeft: '42%',
   },
   userIcon: {
     width: 30,

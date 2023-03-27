@@ -20,7 +20,11 @@ function App(): JSX.Element {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Login Page">
         <Stack.Screen name="Login Page" component={LoginPage} />
-        <Stack.Screen name="Home Page" component={HomePage} />
+        <Stack.Screen
+          name="Home Page"
+          component={HomePage}
+          options={{headerShown: false}}
+        />
         <Stack.Screen name="Account Page" component={AccountPage} />
         <Stack.Screen name="Notifications Page" component={NotificationsPage} />
         <Stack.Screen

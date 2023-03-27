@@ -40,7 +40,7 @@ const menuItems = [
     screen: 'Semester Passes',
   },
   {
-    title: 'Member ID QR Code',
+    title: 'Member ID',
     screen: 'QR Code Overlay',
   },
 ];
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
   },
   menuIcon: {
     width: 30,
-    height: 30,
+    height: 40,
   },
   menuItemsContainer: {
     backgroundColor: '#fff',

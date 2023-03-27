@@ -1,9 +1,11 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
+import Menu from './Menu';
 
 const LiveHeadCountPage = () => {
   return (
     <View style={styles.container}>
+      <Menu />
       <Text style={styles.title}>Live Headcount</Text>
       <View style={styles.card}>
         <Text style={styles.cardTitle}>Rec Center Main Weight Room</Text>
@@ -44,6 +46,7 @@ const styles = StyleSheet.create({
     fontSize: 28,
     fontWeight: 'bold',
     marginBottom: 32,
+    textAlign: 'center',
   },
   card: {
     backgroundColor: 'white',

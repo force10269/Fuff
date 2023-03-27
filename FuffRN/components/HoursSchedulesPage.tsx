@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {Calendar} from 'react-native-calendars';
+import Menu from './Menu';
 
 type HoursSchedulesProps = {
   navigation: any;
@@ -15,6 +16,7 @@ const HoursSchedulesPage = ({navigation}: HoursSchedulesProps) => {
 
   return (
     <View style={styles.container}>
+      <Menu />
       <Text style={styles.headerText}>Hours/Schedule</Text>
       <Calendar
         current={''}
@@ -31,22 +33,6 @@ const HoursSchedulesPage = ({navigation}: HoursSchedulesProps) => {
       />
       <View style={styles.modal}>
         <Text style={styles.date}>{selectedDate}</Text>
-        <Text style={styles.hoursTitle}>CU Recreation Center Hours</Text>
-        <Text style={styles.hoursText}>
-          Monday - Thursday: 6:00am - 10:00pm{'\n'}
-          Friday: 6:00am - 9:00pm{'\n'}
-          Saturday - Sunday: 8:00am - 7:00pm{'\n'}
-          {'\n'}Will Vill Hours{'\n'}
-          {'\n'}Monday - Friday: 7:00am - 8:00pm{'\n'}
-          Saturday: 9:00am - 7:00pm{'\n'}
-          Sunday: 11:00am - 5:00pm{'\n'}
-          {'\n'}Note: Hours are subject to change.
-        </Text>
-        <TouchableOpacity
-          style={styles.closeButton}
-          onPress={() => navigation.goBack()}>
-          <Text style={styles.closeButtonText}>Close</Text>
-        </TouchableOpacity>
       </View>
     </View>
   );
@@ -57,6 +43,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     backgroundColor: '#fff',
+    paddingBottom: 120,
   },
   headerText: {
     fontSize: 24,
@@ -78,26 +65,6 @@ const styles = StyleSheet.create({
   date: {
     fontSize: 20,
     fontWeight: 'bold',
-  },
-  hoursTitle: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    marginVertical: 10,
-  },
-  hoursText: {
-    fontSize: 16,
-    textAlign: 'center',
-  },
-  closeButton: {
-    backgroundColor: '#CFB87C',
-    width: '90%',
-    padding: 10,
-    borderRadius: 10,
-  },
-  closeButtonText: {
-    color: '#fff',
-    fontSize: 18,
-    textAlign: 'center',
   },
 });
 

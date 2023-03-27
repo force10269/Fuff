@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {StyleSheet, View, Text, TextInput} from 'react-native';
+import Menu from './Menu';
 
 const sampleClasses = [
   {
@@ -47,6 +48,7 @@ const ClassesPage = (): JSX.Element => {
 
   return (
     <View style={styles.container}>
+      <Menu />
       <Text style={styles.header}>Classes</Text>
       <View style={styles.searchBarContainer}>
         <TextInput
@@ -130,6 +132,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: 'bold',
     marginBottom: 20,
+    textAlign: 'center',
   },
 });
 

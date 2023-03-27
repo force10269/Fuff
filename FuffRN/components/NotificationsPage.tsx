@@ -1,6 +1,6 @@
 import React from 'react';
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
-
+import Menu from './Menu';
 import HeroCarousel from './HeroCarousel';
 
 type Notification = {
@@ -31,16 +31,18 @@ const NotificationsPage = (): JSX.Element => {
     <ScrollView style={styles.container}>
       <Text style={styles.title}>Notifications</Text>
       <View style={styles.content}>
-        <HeroCarousel
-          items={NOTIFICATIONS.filter(n => n.type === 'alert')}
-          renderItem={(item: Notification) => (
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Important Announcements</Text>
+          {NOTIFICATIONS.filter(n => n.type === 'alert').map(item => (
             <View key={item.id} style={styles.notification}>
               <Text style={styles.notificationTitle}>{item.title}</Text>
               <Text style={styles.notificationMessage}>{item.message}</Text>
             </View>
+          ))}
+          {NOTIFICATIONS.filter(n => n.type === 'alert').length === 0 && (
+            <Text style={styles.emptyMessage}>No alert notifications</Text>
           )}
-          title="Important Announcements"
-        />
+        </View>
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Your Upcoming Classes</Text>
           {NOTIFICATIONS.filter(n => n.type === 'message').map(item => (
@@ -52,7 +54,6 @@ const NotificationsPage = (): JSX.Element => {
           {NOTIFICATIONS.filter(n => n.type === 'message').length === 0 && (
             <Text style={styles.emptyMessage}>No registered classes</Text>
           )}
-          <Text style={styles.link}>Find a Class</Text>
         </View>
       </View>
     </ScrollView>
@@ -64,6 +65,8 @@ const styles = StyleSheet.create({
     fontSize: 28,
     fontWeight: 'bold',
     marginBottom: 32,
+    textAlign: 'center',
+    paddingTop: 30,
   },
   container: {
     flex: 1,

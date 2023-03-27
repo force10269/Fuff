@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   carousel: {
-    paddingHorizontal: 10,
+    paddingHorizontal: 0,
   },
   itemContainer: {
     width: 'auto',
