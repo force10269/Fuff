@@ -7,6 +7,7 @@ const QRCodeOverlay = (): JSX.Element => {
   return (
     <>
       <View style={styles.container}>
+        <Text style={styles.title}>Scan at the front desk!</Text>
         <QRCode
           value="sample"
           size={200}
@@ -25,6 +26,12 @@ const QRCodeOverlay = (): JSX.Element => {
 };
 
 const styles = StyleSheet.create({
+  title: {
+    fontSize: 30,
+    textAlign: 'center',
+    marginBottom: 20,
+    fontWeight: 'bold',
+  },
   container: {
     flex: 1,
     alignItems: 'center',
