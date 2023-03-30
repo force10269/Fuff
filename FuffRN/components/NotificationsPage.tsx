@@ -35,6 +35,7 @@ const NotificationsPage = (): JSX.Element => {
         <View style={styles.content}>
           <View style={styles.section}>
             <Text style={styles.sectionTitle}>Important Announcements</Text>
+            {/*  */}
             {NOTIFICATIONS.filter(n => n.type === 'alert').map(item => (
               <View key={item.id} style={styles.notification}>
                 <Text style={styles.notificationTitle}>{item.title}</Text>
