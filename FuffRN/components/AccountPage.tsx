@@ -10,7 +10,14 @@ const AccountPage = (): JSX.Element => {
         <View style={styles.wrapper}>
           <Text style={styles.header}>Account</Text>
           <View style={styles.content}>
-            <Text>Account details here</Text>
+            <Text style={styles.label}>IdentiKey:</Text>
+            <Text style={styles.info}>dojo1234</Text>
+            <Text style={styles.label}>Email:</Text>
+            <Text style={styles.info}>john.doe@colorado.edu</Text>
+            <Text style={styles.label}>Phone:</Text>
+            <Text style={styles.info}>+1 (123) 456-7890</Text>
+            <Text style={styles.label}>Date Joined:</Text>
+            <Text style={styles.info}>January 1, 2022</Text>
           </View>
         </View>
       </ScrollView>
@@ -34,6 +41,14 @@ const styles = StyleSheet.create({
   },
   content: {
     padding: 20,
+  },
+  label: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginTop: 10,
+  },
+  info: {
+    fontSize: 16,
   },
 });
 

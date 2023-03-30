@@ -12,7 +12,16 @@ const SemesterPasses: React.FC<SemesterPassesProps> = () => {
           <View style={styles.container}>
             <Text style={styles.title}>Semester Passes</Text>
             <View style={styles.passesContainer}>
-              {/* Add your passes here */}
+              <View style={styles.passCard}>
+                <Text style={styles.passTitle}>Spring 2023</Text>
+                <Text style={styles.passInfo}>1/1/23 - 5/31/23</Text>
+                <Text style={styles.passInfo}>Price: $250</Text>
+              </View>
+              <View style={styles.passCard}>
+                <Text style={styles.passTitle}>Fall 2023</Text>
+                <Text style={styles.passInfo}>8/1/23 - 12/31/23</Text>
+                <Text style={styles.passInfo}>Price: $250</Text>
+              </View>
             </View>
           </View>
         </ScrollView>
@@ -36,6 +45,24 @@ const styles = StyleSheet.create({
   passesContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
+    justifyContent: 'space-around',
+  },
+  passCard: {
+    backgroundColor: '#f0f0f0',
+    borderRadius: 8,
+    padding: 20,
+    marginBottom: 20,
+    width: '45%',
+  },
+  passTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  passInfo: {
+    fontSize: 14,
+    marginTop: 10,
+    textAlign: 'center',
   },
 });
 
