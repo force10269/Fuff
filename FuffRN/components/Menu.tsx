@@ -73,8 +73,7 @@ const Menu = (): JSX.Element => {
         />
       )}
       <View style={styles.menuContainer}>
-        {/* Add the QRCodeButton component here */}
-        <QRCodeButton zIndex={isMenuOpen ? -1 : 1} />
+        <QRCodeButton zIndex={isMenuOpen ? -1 : 1} hideOnQRCodeOverlay />
         <View>
           <View style={styles.halfOval}>
             <TouchableOpacity

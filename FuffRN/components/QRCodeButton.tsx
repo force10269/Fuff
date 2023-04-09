@@ -1,9 +1,25 @@
 import React from 'react';
 import {TouchableOpacity, Image, StyleSheet} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
+import {useRoute} from '@react-navigation/native';
 
-const QRCodeButton = ({zIndex}: {zIndex: number}) => {
+interface QRCodeButtonProps {
+  onPress?: () => void;
+  zIndex?: number;
+  hideOnQRCodeOverlay?: boolean;
+}
+
+const QRCodeButton: React.FC<QRCodeButtonProps> = ({
+  onPress,
+  zIndex,
+  hideOnQRCodeOverlay,
+}) => {
   const {navigate} = useNavigation();
+  const route = useRoute();
+
+  if (hideOnQRCodeOverlay && route.name === 'QR Code Overlay') {
+    return null;
+  }
 
   return (
     <TouchableOpacity
