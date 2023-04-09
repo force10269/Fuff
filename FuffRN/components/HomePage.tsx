@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
 import Menu from './Menu';
+import QRCodeButton from './QRCodeButton';
 import {useNavigation} from '@react-navigation/native';
 import HeroCarousel from './HeroCarousel';
 
@@ -23,6 +24,7 @@ const HomePage = () => {
   return (
     <View style={styles.container}>
       <Menu />
+      <QRCodeButton />
       <View style={styles.headerContainer}>
         <Text style={styles.title}>f u f f</Text>
         <TouchableOpacity onPress={() => navigate('Account Page')}>

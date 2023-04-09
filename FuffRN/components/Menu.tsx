@@ -7,6 +7,7 @@ import {
   Image,
   LayoutAnimation,
 } from 'react-native';
+import QRCodeButton from './QRCodeButton';
 import {useNavigation} from '@react-navigation/native';
 
 const menuItems = [
@@ -37,10 +38,6 @@ const menuItems = [
   {
     title: 'Semester Passes',
     screen: 'Semester Passes',
-  },
-  {
-    title: 'Member ID',
-    screen: 'QR Code Overlay',
   },
 ];
 
@@ -76,6 +73,8 @@ const Menu = (): JSX.Element => {
         />
       )}
       <View style={styles.menuContainer}>
+        {/* Add the QRCodeButton component here */}
+        <QRCodeButton zIndex={isMenuOpen ? -1 : 1} />
         <View>
           <View style={styles.halfOval}>
             <TouchableOpacity
@@ -123,7 +122,6 @@ const styles = StyleSheet.create({
   },
   menuItemsContainer: {
     backgroundColor: '#CFB87C',
-    paddingVertical: 10,
     alignItems: 'center',
     textAlign: 'center',
     justifyContent: 'center',
