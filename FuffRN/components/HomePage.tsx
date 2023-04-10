@@ -11,7 +11,6 @@ const headcountIcon = require('./assets/headcount-icon.png');
 const notificationsIcon = require('./assets/notifications-icon.png');
 const passesIcon = require('./assets/passes-icon.png');
 
-
 const HomePage = () => {
   const {navigate} = useNavigation();
 
