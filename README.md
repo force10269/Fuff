@@ -1,5 +1,5 @@
 # Fuff: Fit Buffs
 
-https://user-images.githubusercontent.com/69921727/229198063-a4903992-777a-45c4-b758-d58d959b4f80.mp4
+https://user-images.githubusercontent.com/69921727/230806043-7e3f5434-25e9-421e-bd70-74fb0cfd1cba.mp4
 
 This is a hi-fi prototype for a redesign of the CU Rec Center app. Here, we are trying to make certain features much more easy to access, as well as provide a better UI/UX.
