@@ -11,7 +11,7 @@ interface HeroCarouselProps {
 }
 
 const screenHeight = Dimensions.get('window').height;
-const carouselHeight = screenHeight * 0.3;
+const carouselHeight = screenHeight * 0.17;
 
 const HeroCarousel: React.FC<HeroCarouselProps> = ({
   items = [{title: 'Aenean leo'}, {title: 'In turpis'}, {title: 'Lorem Ipsum'}],

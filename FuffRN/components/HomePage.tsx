@@ -1,29 +1,67 @@
 import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
-import Menu from './Menu';
 import QRCodeButton from './QRCodeButton';
 import {useNavigation} from '@react-navigation/native';
 import HeroCarousel from './HeroCarousel';
 
+const classesIcon = require('./assets/classes-icon.png');
+const clubsIcon = require('./assets/clubs-icon.png');
+const hoursIcon = require('./assets/hours-icon.png');
+const headcountIcon = require('./assets/headcount-icon.png');
+const notificationsIcon = require('./assets/notifications-icon.png');
+const passesIcon = require('./assets/passes-icon.png');
+
+
 const HomePage = () => {
   const {navigate} = useNavigation();
 
-  // Sample filler classes data
-  const popularClasses = [
+  const buttonsData = [
     {
-      title: 'Aenean leo',
+      title: 'Classes',
+      screen: 'Classes Page',
+      icon: classesIcon,
     },
     {
-      title: 'In turpis',
+      title: 'Clubs & Intramural Sports',
+      screen: 'Intramurals/Clubs Page',
+      icon: clubsIcon,
     },
     {
-      title: 'Lorem Ipsum',
+      title: 'Hours and Schedule',
+      screen: 'Hours Schedules Page',
+      icon: hoursIcon,
+    },
+    {
+      title: 'Live Headcount',
+      screen: 'Live Head Count Page',
+      icon: headcountIcon,
+    },
+    {
+      title: 'Notifications',
+      screen: 'Notifications Page',
+      icon: notificationsIcon,
+    },
+    {
+      title: 'Semester Passes',
+      screen: 'Semester Passes',
+      icon: passesIcon,
     },
   ];
 
+  const renderButtons = () => {
+    return buttonsData.map((button, index) => (
+      <TouchableOpacity
+        key={index}
+        style={styles.button}
+        onPress={() => navigate(button.screen)}>
+        <Image style={styles.buttonIcon} source={button.icon} />
+        <Text style={styles.buttonText}>{button.title}</Text>
+      </TouchableOpacity>
+    ));
+  };
+
   return (
     <View style={styles.container}>
-      <Menu />
       <QRCodeButton />
       <View style={styles.headerContainer}>
         <Text style={styles.title}>f u f f</Text>
@@ -41,21 +79,7 @@ const HomePage = () => {
         <Text style={styles.heroTitle}>Popular Classes</Text>
         <HeroCarousel />
       </View>
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigate('Classes Page')}>
-          <Text style={styles.buttonText}>Reserve A Class</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigate('Hours Schedules Page')}>
-          <Text style={styles.buttonText}>Special Events</Text>
-        </TouchableOpacity>
-      </View>
-      <View style={styles.headcountContainer}>
-        {/* Visualized icons for live headcount go here */}
-      </View>
+      <View style={styles.buttonContainer}>{renderButtons()}</View>
     </View>
   );
 };
@@ -104,23 +128,30 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     flexDirection: 'row',
+    flexWrap: 'wrap',
     alignItems: 'center',
     justifyContent: 'center',
     padding: 10,
   },
   button: {
     backgroundColor: '#CFB87C',
-    width: 150,
-    height: 100,
+    width: '45%',
+    height: 80,
     borderRadius: 5,
     justifyContent: 'center',
     alignItems: 'center',
     margin: 5,
+    padding: 5,
+  },
+  buttonIcon: {
+    width: 30,
+    height: 30,
   },
   buttonText: {
     color: '#000',
-    fontSize: 16,
+    fontSize: 12,
     textAlign: 'center',
+    marginTop: 5,
   },
   headcountContainer: {
     flexDirection: 'row',
