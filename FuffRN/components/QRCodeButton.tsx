@@ -36,7 +36,7 @@ const QRCodeButton: React.FC<QRCodeButtonProps> = ({
 const styles = StyleSheet.create({
   qrButton: {
     position: 'absolute',
-    bottom: 60,
+    bottom: 80,
     right: 20,
     width: 70,
     height: 70,

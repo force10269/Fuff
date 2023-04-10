@@ -10,6 +10,8 @@ import {
 import QRCodeButton from './QRCodeButton';
 import {useNavigation} from '@react-navigation/native';
 
+const menuIcon = require('./assets/menu-icon.png');
+
 const menuItems = [
   {
     title: 'Home',
@@ -79,12 +81,10 @@ const Menu = (): JSX.Element => {
             <TouchableOpacity
               onPress={handleMenuPress}
               style={styles.menuButton}>
-              <Image
-                source={require('./assets/menu-icon.png')}
-                style={styles.menuIcon}
-              />
+              <Image source={menuIcon} style={styles.menuIcon} />
             </TouchableOpacity>
           </View>
+          <View style={styles.bottomRectangle} />
         </View>
         {isMenuOpen && (
           <View style={styles.menuItemsContainer}>{renderMenuItems()}</View>
@@ -101,6 +101,11 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     zIndex: 1,
+  },
+  bottomRectangle: {
+    width: '100%',
+    height: 20,
+    backgroundColor: '#CFB87C',
   },
   halfOval: {
     width: '100%',
@@ -124,6 +129,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     textAlign: 'center',
     justifyContent: 'center',
+    paddingBottom: 40,
   },
   menuItem: {
     textAlign: 'center',
