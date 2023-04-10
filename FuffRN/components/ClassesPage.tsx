@@ -56,6 +56,8 @@ const ClassesPage = (): JSX.Element => {
           placeholder="Search Classes"
           onChangeText={handleSearchTermChange}
           value={searchTerm}
+          autoCapitalize="none"
+          autoCorrect={false}
         />
       </View>
       <View style={styles.classesContainer}>

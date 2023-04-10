@@ -21,6 +21,8 @@ const IntramuralsClubsPage: React.FC<Props> = () => {
           onChangeText={(text: string) => updateSearch(text)}
           value={search}
           inputStyle={styles.searchBarInput}
+          autoCapitalize="none"
+          autoCorrect={false}
         />
         <Text style={styles.sectionTitle}>Ongoing</Text>
         <View style={styles.cardContainer}>
