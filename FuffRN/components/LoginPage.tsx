@@ -6,7 +6,10 @@ import {
   TouchableOpacity,
   View,
   Text,
+  Image,
 } from 'react-native';
+
+const buffaloIcon = require('./assets/buffalo-icon.png');
 
 interface LoginPageProps {
   navigation: any;
@@ -24,6 +27,7 @@ const LoginPage: React.FC<LoginPageProps> = ({navigation}) => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <Image source={buffaloIcon} />
       <View style={styles.inputContainer}>
         <TextInput
           placeholder="Username"
@@ -31,6 +35,8 @@ const LoginPage: React.FC<LoginPageProps> = ({navigation}) => {
           style={styles.textInput}
           onChangeText={setUsername}
           value={username}
+          autoCapitalize="none"
+          autoCorrect={false}
         />
       </View>
       <View style={styles.inputContainer}>
@@ -41,6 +47,8 @@ const LoginPage: React.FC<LoginPageProps> = ({navigation}) => {
           style={styles.textInput}
           onChangeText={setPassword}
           value={password}
+          autoCapitalize="none"
+          autoCorrect={false}
         />
       </View>
       <TouchableOpacity style={styles.button} onPress={handleLogin}>
