@@ -1,13 +1,36 @@
-import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
-import SearchBar from 'react-native-platform-searchbar';
+import React, {useState, useEffect} from 'react';
+import {StyleSheet, Text, TextInput, View} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import Menu from './Menu';
 
 interface Props {}
 
+const sampleActivities = [
+  {
+    id: 1,
+    title: 'Basketball Club',
+    subtitle: 'Every Wednesday, 6pm',
+    type: 'ongoing',
+  },
+  {
+    id: 2,
+    title: 'Ultimate Frisbee League',
+    subtitle: 'Starting in May',
+    type: 'upcoming',
+  },
+];
+
 const IntramuralsClubsPage: React.FC<Props> = () => {
-  const [search, setSearch] = React.useState('');
+  const [activities, setActivities] = useState(sampleActivities);
+  const [search, setSearch] = useState('');
+
+  useEffect(() => {
+    setActivities(
+      sampleActivities.filter(activity =>
+        activity.title.toLowerCase().includes(search.toLowerCase()),
+      ),
+    );
+  }, [search]);
 
   const updateSearch = (text: string) => {
     setSearch(text);
@@ -16,29 +39,35 @@ const IntramuralsClubsPage: React.FC<Props> = () => {
   return (
     <>
       <ScrollView style={styles.container}>
-        <SearchBar
+        <TextInput
+          style={styles.searchBarInput}
           placeholder="Search Activities"
-          onChangeText={(text: string) => updateSearch(text)}
+          onChangeText={updateSearch}
           value={search}
-          inputStyle={styles.searchBarInput}
           autoCapitalize="none"
           autoCorrect={false}
         />
         <Text style={styles.sectionTitle}>Ongoing</Text>
         <View style={styles.cardContainer}>
-          {/* Sample card */}
-          <View style={styles.card}>
-            <Text style={styles.cardTitle}>Basketball Club</Text>
-            <Text style={styles.cardSubtitle}>Every Wednesday, 6pm</Text>
-          </View>
+          {activities
+            .filter(activity => activity.type === 'ongoing')
+            .map(activity => (
+              <View key={activity.id} style={styles.card}>
+                <Text style={styles.cardTitle}>{activity.title}</Text>
+                <Text style={styles.cardSubtitle}>{activity.subtitle}</Text>
+              </View>
+            ))}
         </View>
         <Text style={styles.sectionTitle}>Upcoming</Text>
         <View style={styles.cardContainer}>
-          {/* Sample card */}
-          <View style={styles.card}>
-            <Text style={styles.cardTitle}>Ultimate Frisbee League</Text>
-            <Text style={styles.cardSubtitle}>Starting in May</Text>
-          </View>
+          {activities
+            .filter(activity => activity.type === 'upcoming')
+            .map(activity => (
+              <View key={activity.id} style={styles.card}>
+                <Text style={styles.cardTitle}>{activity.title}</Text>
+                <Text style={styles.cardSubtitle}>{activity.subtitle}</Text>
+              </View>
+            ))}
         </View>
       </ScrollView>
       <Menu />
@@ -51,21 +80,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     padding: 20,
   },
-  searchBarContainer: {
-    backgroundColor: '#fff',
-    borderBottomColor: 'transparent',
-    borderTopColor: 'transparent',
-    margin: 0,
-    padding: 0,
-  },
-  searchBarInputContainer: {
-    backgroundColor: '#fff',
-  },
   searchBarInput: {
     backgroundColor: '#f2f2f2',
     borderRadius: 10,
     color: 'black',
     fontSize: 16,
+    padding: 10,
+    marginBottom: 20,
   },
   sectionTitle: {
     fontSize: 24,
