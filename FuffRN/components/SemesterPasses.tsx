@@ -23,6 +23,12 @@ const SemesterPasses: React.FC<SemesterPassesProps> = () => {
                 <Text style={styles.passInfo}>Price: $250</Text>
               </View>
             </View>
+            <Text style={styles.title}>Your Passes</Text>
+            <View style={styles.passesContainer}>
+              <View style={styles.passCard}>
+                <Text style={styles.passTitle}>No Current Passes</Text>
+              </View>
+            </View>
           </View>
         </ScrollView>
       </SafeAreaView>
@@ -35,6 +41,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
+    backgroundColor: '#fff',
+    paddingBottom: '150%',
   },
   title: {
     fontSize: 24,

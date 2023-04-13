@@ -1,5 +1,12 @@
 import React, {useState, useEffect} from 'react';
-import {StyleSheet, View, Text, TextInput} from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 import Menu from './Menu';
 
 const sampleClasses = [
@@ -32,6 +39,7 @@ const sampleClasses = [
 const ClassesPage = (): JSX.Element => {
   const [classes, setClasses] = useState(sampleClasses);
   const [searchTerm, setSearchTerm] = useState('');
+  const navigation = useNavigation();
 
   useEffect(() => {
     // Filtering the list of classes based on the search term
@@ -62,14 +70,17 @@ const ClassesPage = (): JSX.Element => {
       </View>
       <View style={styles.classesContainer}>
         {classes.map(classObj => (
-          <View key={classObj.id} style={styles.classContainer}>
+          <TouchableOpacity
+            key={classObj.id}
+            style={styles.classContainer}
+            onPress={() => navigation.navigate('Class Details Page', {classObj})}>
             <Text style={styles.className}>{classObj.name}</Text>
             <Text style={styles.classDescription}>{classObj.description}</Text>
             <Text style={styles.classDetails}>
               {classObj.instructor}, {classObj.time}
             </Text>
             <Text style={styles.classDetails}>{classObj.location}</Text>
-          </View>
+          </TouchableOpacity>
         ))}
       </View>
     </View>
@@ -81,6 +92,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: 20,
     paddingVertical: 10,
+    backgroundColor: 'white',
   },
   searchBarContainer: {
     marginBottom: 20,
@@ -113,9 +125,9 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   classContainer: {
-    backgroundColor: '#F0F0F0',
+    backgroundColor: '#F2F2F2',
     padding: 10,
-    borderRadius: 5,
+    borderRadius: 10,
     marginBottom: 10,
   },
   className: {

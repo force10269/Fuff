@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
-import {StyleSheet, Text, TextInput, View} from 'react-native';
+import {StyleSheet, Text, TextInput, TouchableOpacity, View} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
+import {useNavigation} from '@react-navigation/native';
 import Menu from './Menu';
 
 interface Props {}
@@ -23,6 +24,7 @@ const sampleActivities = [
 const IntramuralsClubsPage: React.FC<Props> = () => {
   const [activities, setActivities] = useState(sampleActivities);
   const [search, setSearch] = useState('');
+  const navigation = useNavigation();
 
   useEffect(() => {
     setActivities(
@@ -52,10 +54,14 @@ const IntramuralsClubsPage: React.FC<Props> = () => {
           {activities
             .filter(activity => activity.type === 'ongoing')
             .map(activity => (
-              <View key={activity.id} style={styles.card}>
+              <TouchableOpacity
+                key={activity.id}
+                style={styles.card}
+                onPress={() => navigation.navigate('Activity Details Page', { activity })}
+              >
                 <Text style={styles.cardTitle}>{activity.title}</Text>
                 <Text style={styles.cardSubtitle}>{activity.subtitle}</Text>
-              </View>
+              </TouchableOpacity>
             ))}
         </View>
         <Text style={styles.sectionTitle}>Upcoming</Text>
@@ -63,10 +69,14 @@ const IntramuralsClubsPage: React.FC<Props> = () => {
           {activities
             .filter(activity => activity.type === 'upcoming')
             .map(activity => (
-              <View key={activity.id} style={styles.card}>
+              <TouchableOpacity
+                key={activity.id}
+                style={styles.card}
+                onPress={() => navigation.navigate('Activity Details Page', { activity })}
+              >
                 <Text style={styles.cardTitle}>{activity.title}</Text>
                 <Text style={styles.cardSubtitle}>{activity.subtitle}</Text>
-              </View>
+            </TouchableOpacity>
             ))}
         </View>
       </ScrollView>

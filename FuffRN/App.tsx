@@ -7,7 +7,9 @@ import NotificationsPage from './components/NotificationsPage';
 import HoursSchedulesPage from './components/HoursSchedulesPage';
 import LiveHeadCountPage from './components/LiveHeadCountPage';
 import ClassesPage from './components/ClassesPage';
+import ClassDetailsPage from './components/ClassDetailsPage';
 import IntramuralsClubsPage from './components/IntramuralsClubsPage';
+import ActivityDetailsPage from './components/ActivityDetailsPage';
 import QRCodeOverlay from './components/QRCodeOverlay';
 import LoginPage from './components/LoginPage';
 import Menu from './components/Menu';
@@ -36,9 +38,14 @@ function App(): JSX.Element {
           component={LiveHeadCountPage}
         />
         <Stack.Screen name="Classes Page" component={ClassesPage} />
+        <Stack.Screen name="Class Details Page" component={ClassDetailsPage} />
         <Stack.Screen
           name="Intramurals/Clubs Page"
           component={IntramuralsClubsPage}
+        />
+        <Stack.Screen
+          name="Activity Details Page"
+          component={ActivityDetailsPage}
         />
         <Stack.Screen name="QR Code Overlay" component={QRCodeOverlay} />
         <Stack.Screen name="Semester Passes" component={SemesterPasses} />
