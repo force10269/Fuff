@@ -1,4 +1,5 @@
 {
   "name": "FuffRN",
-  "displayName": "FuffRN"
+  "displayName": "FuffRN",
+  "associatedDomains": ["webcredentials:fedauth.colorado.edu"]
 }

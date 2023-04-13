@@ -41,10 +41,9 @@ const LoginPage: React.FC<LoginPageProps> = ({navigation}) => {
             style={styles.textInput}
             onChangeText={setUsername}
             value={username}
-            textContentType={'username'}
+            textContentType="username"
             autoCapitalize="none"
-            autoCompleteType="email"
-            keyboardType="email-address"
+            autoComplete="organization-title"
             autoCorrect={false}
             returnKeyType="next"
             onSubmitEditing={() => passwordRef.current.focus()}
@@ -57,12 +56,12 @@ const LoginPage: React.FC<LoginPageProps> = ({navigation}) => {
             placeholder="Password"
             placeholderTextColor="#A2A4A3"
             secureTextEntry
-            textContentType={'password' || 'newPassword'}
+            textContentType="password"
+            autoComplete="url"
             style={styles.textInput}
             onChangeText={setPassword}
             value={password}
             autoCapitalize="none"
-            autoCompleteType="password"
             autoCorrect={false}
             returnKeyType="done"
             onSubmitEditing={handleLogin}
