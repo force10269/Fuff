@@ -8,6 +8,7 @@ import {
   Text,
   Image,
   Keyboard,
+  TouchableWithoutFeedback,
 } from 'react-native';
 
 const buffaloIcon = require('./assets/buffalo-icon.png');
@@ -30,44 +31,46 @@ const LoginPage: React.FC<LoginPageProps> = ({navigation}) => {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
-      <Image source={buffaloIcon} />
-      <View style={styles.inputContainer}>
-        <TextInput
-          placeholder="Username"
-          placeholderTextColor="#A2A4A3"
-          style={styles.textInput}
-          onChangeText={setUsername}
-          value={username}
-          autoCapitalize="none"
-          autoCompleteType="email"
-          keyboardType="email-address"
-          autoCorrect={false}
-          returnKeyType="next"
-          onSubmitEditing={() => passwordRef.current.focus()}
-          blurOnSubmit={false}
-        />
-      </View>
-      <View style={styles.inputContainer}>
-        <TextInput
-          ref={passwordRef}
-          placeholder="Password"
-          placeholderTextColor="#A2A4A3"
-          secureTextEntry
-          style={styles.textInput}
-          onChangeText={setPassword}
-          value={password}
-          autoCapitalize="none"
-          autoCompleteType="password"
-          autoCorrect={false}
-          returnKeyType="done"
-          onSubmitEditing={handleLogin}
-        />
-      </View>
-      <TouchableOpacity style={styles.button} onPress={handleLogin}>
-        <Text style={styles.buttonText}>Log In</Text>
-      </TouchableOpacity>
-    </SafeAreaView>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <SafeAreaView style={styles.container}>
+        <Image source={buffaloIcon} />
+        <View style={styles.inputContainer}>
+          <TextInput
+            placeholder="Username"
+            placeholderTextColor="#A2A4A3"
+            style={styles.textInput}
+            onChangeText={setUsername}
+            value={username}
+            autoCapitalize="none"
+            autoCompleteType="email"
+            keyboardType="email-address"
+            autoCorrect={false}
+            returnKeyType="next"
+            onSubmitEditing={() => passwordRef.current.focus()}
+            blurOnSubmit={false}
+          />
+        </View>
+        <View style={styles.inputContainer}>
+          <TextInput
+            ref={passwordRef}
+            placeholder="Password"
+            placeholderTextColor="#A2A4A3"
+            secureTextEntry
+            style={styles.textInput}
+            onChangeText={setPassword}
+            value={password}
+            autoCapitalize="none"
+            autoCompleteType="password"
+            autoCorrect={false}
+            returnKeyType="done"
+            onSubmitEditing={handleLogin}
+          />
+        </View>
+        <TouchableOpacity style={styles.button} onPress={handleLogin}>
+          <Text style={styles.buttonText}>Log In</Text>
+        </TouchableOpacity>
+      </SafeAreaView>
+    </TouchableWithoutFeedback>
   );
 };
 
