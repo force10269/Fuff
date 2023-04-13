@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -7,6 +7,7 @@ import {
   View,
   Text,
   Image,
+  Keyboard,
 } from 'react-native';
 
 const buffaloIcon = require('./assets/buffalo-icon.png');
@@ -19,7 +20,10 @@ const LoginPage: React.FC<LoginPageProps> = ({navigation}) => {
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
 
+  const passwordRef = useRef(null);
+
   const handleLogin = () => {
+    Keyboard.dismiss();
     // API Here
     // LOGIN REDIRECT TO HOMEPAGE HERE
     navigation.navigate('Home Page');
@@ -36,11 +40,17 @@ const LoginPage: React.FC<LoginPageProps> = ({navigation}) => {
           onChangeText={setUsername}
           value={username}
           autoCapitalize="none"
+          autoCompleteType="email"
+          keyboardType="email-address"
           autoCorrect={false}
+          returnKeyType="next"
+          onSubmitEditing={() => passwordRef.current.focus()}
+          blurOnSubmit={false}
         />
       </View>
       <View style={styles.inputContainer}>
         <TextInput
+          ref={passwordRef}
           placeholder="Password"
           placeholderTextColor="#A2A4A3"
           secureTextEntry
@@ -48,7 +58,10 @@ const LoginPage: React.FC<LoginPageProps> = ({navigation}) => {
           onChangeText={setPassword}
           value={password}
           autoCapitalize="none"
+          autoCompleteType="password"
           autoCorrect={false}
+          returnKeyType="done"
+          onSubmitEditing={handleLogin}
         />
       </View>
       <TouchableOpacity style={styles.button} onPress={handleLogin}>
