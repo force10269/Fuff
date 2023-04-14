@@ -1,36 +1,89 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, ScrollView} from 'react-native';
 import Menu from './Menu';
+
+const sampleData = [
+  {
+    id: 1,
+    title: 'Rec Center Main Weight Room',
+    progress: 60,
+  },
+  {
+    id: 2,
+    title: 'Will Vill Main Weight Room',
+    progress: 20,
+  },
+  {
+    id: 3,
+    title: 'Rec Center Weight Room Annex',
+    progress: 80,
+  },
+  {
+    id: 4,
+    title: 'Competition Pool',
+    progress: 50,
+  },
+  {
+    id: 5,
+    title: 'Basketball Court',
+    progress: 40,
+  },
+  {
+    id: 6,
+    title: 'Tennis Courts',
+    progress: 70,
+  },
+  {
+    id: 7,
+    title: 'Group Fitness Room',
+    progress: 90,
+  },
+  {
+    id: 8,
+    title: 'Racquetball Courts',
+    progress: 30,
+  },
+  {
+    id: 9,
+    title: 'Locker Rooms',
+    progress: 10,
+  },
+  {
+    id: 10,
+    title: 'Outdoor Rec Fields',
+    progress: 75,
+  },
+  {
+    id: 11,
+    title: 'Ice Rink',
+    progress: 25,
+  },
+  {
+    id: 12,
+    title: 'Running Track',
+    progress: 55,
+  },
+];
 
 const LiveHeadCountPage = () => {
   return (
     <View style={styles.container}>
       <Menu />
-      <Text style={styles.title}>Live Headcount</Text>
-      <View style={styles.card}>
-        <Text style={styles.cardTitle}>Rec Center Main Weight Room</Text>
-        <View style={styles.progressBar}>
-          <View style={styles.progressInner} />
+      <ScrollView>
+        <View style={styles.content}>
+          <Text style={styles.title}>Live Headcount</Text>
+          {sampleData.map(item => (
+            <View key={item.id} style={styles.card}>
+              <Text style={styles.cardTitle}>{item.title}</Text>
+              <View style={styles.progressBar}>
+                <View
+                  style={[styles.progressInner, {width: `${item.progress}%`}]}
+                />
+              </View>
+            </View>
+          ))}
         </View>
-      </View>
-      <View style={styles.card}>
-        <Text style={styles.cardTitle}>Will Vill Main Weight Room</Text>
-        <View style={styles.progressBar}>
-          <View style={styles.progressInner} />
-        </View>
-      </View>
-      <View style={styles.card}>
-        <Text style={styles.cardTitle}>Rec Center Weight Room Annex</Text>
-        <View style={styles.progressBar}>
-          <View style={styles.progressInner} />
-        </View>
-      </View>
-      <View style={styles.card}>
-        <Text style={styles.cardTitle}>Competition Pool</Text>
-        <View style={styles.progressBar}>
-          <View style={styles.progressInner} />
-        </View>
-      </View>
+      </ScrollView>
     </View>
   );
 };
@@ -41,6 +94,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#f7f7f7',
     paddingHorizontal: 16,
     paddingVertical: 16,
+    paddingBottom: 100,
   },
   title: {
     fontSize: 28,
@@ -68,7 +122,9 @@ const styles = StyleSheet.create({
   progressInner: {
     backgroundColor: '#FFD166',
     height: 20,
-    width: '60%',
+  },
+  paddingBottom: {
+    paddingBottom: 150,
   },
 });
 
