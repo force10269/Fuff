@@ -1,10 +1,16 @@
 import React from 'react';
-import {SafeAreaView, ScrollView, Text, View, StyleSheet} from 'react-native';
+import {SafeAreaView, ScrollView, Text, View, StyleSheet, Linking, TouchableOpacity, Touchable} from 'react-native';
 import Menu from './Menu';
 
 type SemesterPassesProps = {};
 
 const SemesterPasses: React.FC<SemesterPassesProps> = () => {
+  const handlePress = () => {
+    Linking.openURL(
+      'https://www.colorado.edu/recreation/membership-and-lockers/membership-rates',
+    );
+  }
+
   return (
     <>
       <SafeAreaView>
@@ -12,16 +18,16 @@ const SemesterPasses: React.FC<SemesterPassesProps> = () => {
           <View style={styles.container}>
             <Text style={styles.title}>Semester Passes</Text>
             <View style={styles.passesContainer}>
-              <View style={styles.passCard}>
+              <TouchableOpacity style={styles.passCard} onPress={handlePress}>
                 <Text style={styles.passTitle}>Spring 2023</Text>
                 <Text style={styles.passInfo}>1/1/23 - 5/31/23</Text>
                 <Text style={styles.passInfo}>Price: $250</Text>
-              </View>
-              <View style={styles.passCard}>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.passCard} onPress={handlePress}>
                 <Text style={styles.passTitle}>Fall 2023</Text>
                 <Text style={styles.passInfo}>8/1/23 - 12/31/23</Text>
                 <Text style={styles.passInfo}>Price: $250</Text>
-              </View>
+              </TouchableOpacity>
             </View>
             <Text style={styles.title}>Your Passes</Text>
             <View style={styles.passesContainer}>
