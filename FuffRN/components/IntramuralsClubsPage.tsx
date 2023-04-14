@@ -1,6 +1,12 @@
 import React, {useState, useEffect} from 'react';
-import {StyleSheet, Text, TextInput, TouchableOpacity, View} from 'react-native';
-import {ScrollView} from 'react-native-gesture-handler';
+import {
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+  ScrollView,
+} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import Menu from './Menu';
 
@@ -19,6 +25,54 @@ const sampleActivities = [
     subtitle: 'Starting in May',
     type: 'upcoming',
   },
+  {
+    id: 3,
+    title: 'Table Tennis Club',
+    subtitle: 'Every Monday, 8pm',
+    type: 'ongoing',
+  },
+  {
+    id: 4,
+    title: 'Swimming Lessons',
+    subtitle: 'Starting in June',
+    type: 'upcoming',
+  },
+  {
+    id: 5,
+    title: 'Running Club',
+    subtitle: 'Every Saturday, 9am',
+    type: 'ongoing',
+  },
+  {
+    id: 6,
+    title: 'Dance Class',
+    subtitle: 'Starting in July',
+    type: 'upcoming',
+  },
+  {
+    id: 7,
+    title: 'Golf Lessons',
+    subtitle: 'Starting in August',
+    type: 'upcoming',
+  },
+  {
+    id: 8,
+    title: 'Martial Arts Club',
+    subtitle: 'Every Friday, 6pm',
+    type: 'ongoing',
+  },
+  {
+    id: 9,
+    title: 'Photography Workshop',
+    subtitle: 'Starting in September',
+    type: 'upcoming',
+  },
+  {
+    id: 10,
+    title: 'Cooking Class',
+    subtitle: 'Every Sunday, 4pm',
+    type: 'ongoing',
+  }
 ];
 
 const IntramuralsClubsPage: React.FC<Props> = () => {
@@ -113,6 +167,8 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     padding: 20,
     width: '100%',
+    marginTop: 10,
+    marginBottom: 10,
   },
   cardTitle: {
     fontSize: 18,
