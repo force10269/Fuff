@@ -1,5 +1,13 @@
 import React from 'react';
-import {SafeAreaView, ScrollView, Text, View, StyleSheet, Linking, TouchableOpacity, Touchable} from 'react-native';
+import {
+  SafeAreaView,
+  ScrollView,
+  Text,
+  View,
+  StyleSheet,
+  Linking,
+  TouchableOpacity,
+} from 'react-native';
 import Menu from './Menu';
 
 type SemesterPassesProps = {};
