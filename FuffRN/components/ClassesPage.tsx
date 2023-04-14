@@ -37,6 +37,7 @@ const ClassesPage = (): JSX.Element => {
         <TextInput
           style={styles.searchBar}
           placeholder="Search Classes"
+          placeholderTextColor={'#666666'}
           onChangeText={handleSearchTermChange}
           value={searchTerm}
           autoCapitalize="none"

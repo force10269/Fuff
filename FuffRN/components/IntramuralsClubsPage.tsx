@@ -36,6 +36,7 @@ const IntramuralsClubsPage: React.FC<Props> = () => {
         <TextInput
           style={styles.searchBarInput}
           placeholder="Search Activities"
+          placeholderTextColor={'#666666'}
           onChangeText={updateSearch}
           value={search}
           autoCapitalize="none"
