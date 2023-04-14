@@ -14,7 +14,13 @@ const screenHeight = Dimensions.get('window').height;
 const carouselHeight = screenHeight * 0.17;
 
 const HeroCarousel: React.FC<HeroCarouselProps> = ({
-  items = [{title: 'Aenean leo'}, {title: 'In turpis'}, {title: 'Lorem Ipsum'}],
+  items = [
+    {title: 'Yoga'},
+    {title: 'Zumba'},
+    {title: 'Pilates'},
+    {title: 'Spinning'},
+    {title: 'Kickboxing'},
+  ],
 }) => {
   const [activeSlide, setActiveSlide] = useState(0);
   const renderItem = ({item, index}: {item: CarouselItem; index: number}) => {
