@@ -11,7 +11,7 @@ const HoursSchedulesPage = ({navigation}: HoursSchedulesProps) => {
   const [selectedDate, setSelectedDate] = useState('');
 
   const onDayPress = (day: any) => {
-    setSelectedDate(day.dateString + " schedule here");
+    setSelectedDate(day.dateString + ' schedule here');
   };
 
   return (

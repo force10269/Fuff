@@ -12,7 +12,9 @@ const ClassDetailsPage = ({route}) => {
         <View style={styles.card}>
           <Text style={styles.title}>{classObj.name}</Text>
           <Text style={styles.description}>{classObj.description}</Text>
-          <Text style={styles.instructor}>Instructor: {classObj.instructor}</Text>
+          <Text style={styles.instructor}>
+            Instructor: {classObj.instructor}
+          </Text>
           <Text style={styles.time}>Time: {classObj.time}</Text>
           <Text style={styles.location}>Location: {classObj.location}</Text>
         </View>

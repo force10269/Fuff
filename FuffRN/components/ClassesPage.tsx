@@ -48,8 +48,9 @@ const ClassesPage = (): JSX.Element => {
           <TouchableOpacity
             key={classObj.id}
             style={styles.classContainer}
-            onPress={() => navigation.navigate('Class Details Page', {classObj})}
-          >
+            onPress={() =>
+              navigation.navigate('Class Details Page', {classObj})
+            }>
             <Text style={styles.className}>{classObj.name}</Text>
             <Text style={styles.classDescription}>{classObj.description}</Text>
             <Text style={styles.classDetails}>

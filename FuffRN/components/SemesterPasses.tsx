@@ -17,7 +17,7 @@ const SemesterPasses: React.FC<SemesterPassesProps> = () => {
     Linking.openURL(
       'https://www.colorado.edu/recreation/membership-and-lockers/membership-rates',
     );
-  }
+  };
 
   return (
     <>

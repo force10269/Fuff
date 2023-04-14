@@ -49,8 +49,9 @@ const IntramuralsClubsPage: React.FC<Props> = () => {
               <TouchableOpacity
                 key={activity.id}
                 style={styles.card}
-                onPress={() => navigation.navigate('Activity Details Page', { activity })}
-              >
+                onPress={() =>
+                  navigation.navigate('Activity Details Page', {activity})
+                }>
                 <Text style={styles.cardTitle}>{activity.title}</Text>
                 <Text style={styles.cardSubtitle}>{activity.subtitle}</Text>
               </TouchableOpacity>
@@ -64,11 +65,12 @@ const IntramuralsClubsPage: React.FC<Props> = () => {
               <TouchableOpacity
                 key={activity.id}
                 style={styles.card}
-                onPress={() => navigation.navigate('Activity Details Page', { activity })}
-              >
+                onPress={() =>
+                  navigation.navigate('Activity Details Page', {activity})
+                }>
                 <Text style={styles.cardTitle}>{activity.title}</Text>
                 <Text style={styles.cardSubtitle}>{activity.subtitle}</Text>
-            </TouchableOpacity>
+              </TouchableOpacity>
             ))}
         </View>
       </ScrollView>
