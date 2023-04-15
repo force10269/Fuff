@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#A2A4A3',
   },
   overlay: {
-    backgroundColor: 'rgba(207, 184, 124, 0.95)',
+    backgroundColor: 'rgba(207, 184, 124, 0.8)',
     position: 'absolute',
     top: 0,
     bottom: 0,
