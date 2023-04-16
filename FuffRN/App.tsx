@@ -1,6 +1,7 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import HomeButton from './components/HomeButton';
 import HomePage from './components/HomePage';
 import AccountPage from './components/AccountPage';
 import NotificationsPage from './components/NotificationsPage';
@@ -20,12 +21,23 @@ const Stack = createNativeStackNavigator();
 function App(): JSX.Element {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login Page">
-        <Stack.Screen name="Login Page" component={LoginPage} />
+      <Stack.Navigator
+        initialRouteName="Login Page"
+        screenOptions={{
+          // eslint-disable-next-line react/no-unstable-nested-components
+          headerRight: () => {
+            return <HomeButton />;
+          },
+        }}>
+        <Stack.Screen
+          name="Login Page"
+          component={LoginPage}
+          options={{headerShown: false, headerRight: () => null}}
+        />
         <Stack.Screen
           name="Home Page"
           component={HomePage}
-          options={{headerShown: false}}
+          options={{headerShown: false, headerRight: () => null}}
         />
         <Stack.Screen name="Account Page" component={AccountPage} />
         <Stack.Screen name="Notifications Page" component={NotificationsPage} />

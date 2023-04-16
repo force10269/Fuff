@@ -37,7 +37,7 @@ const HoursSchedulesPage = ({navigation}: HoursSchedulesProps) => {
         }}
       />
       <View style={styles.modal}>
-      <Text style={styles.date}>{selectedDate}</Text>
+        <Text style={styles.date}>{selectedDate}</Text>
         {selectedDate &&
           sampleSchedule[selectedDate] &&
           sampleSchedule[selectedDate].events.map((event, index) => (
