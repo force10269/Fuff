@@ -74,10 +74,6 @@ const HomePage = () => {
       <View style={styles.alertBar}>
         <Text style={styles.alertText}>Alert: There is a fire drill</Text>
       </View>
-      <View style={styles.heroContainer}>
-        <Text style={styles.heroTitle}>Popular Classes</Text>
-        <HeroCarousel />
-      </View>
       <View style={styles.buttonContainer}>{renderButtons()}</View>
     </View>
   );
@@ -131,20 +127,21 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     padding: 10,
+    paddingTop: 20,
   },
   button: {
     backgroundColor: '#CFB87C',
     width: '45%',
-    height: 80,
-    borderRadius: 5,
+    height: 170,
+    borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center',
     margin: 5,
     padding: 5,
   },
   buttonIcon: {
-    width: 30,
-    height: 30,
+    width: 45,
+    height: 45,
   },
   buttonText: {
     color: '#000',
