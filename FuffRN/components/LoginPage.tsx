@@ -12,6 +12,8 @@ import {
 } from 'react-native';
 
 const buffaloIcon = require('./assets/buffalo-icon.png');
+const eyeIcon = require('./assets/eye-icon.png');
+const eyeSlashIcon = require('./assets/closed-eye-icon.png');
 
 interface LoginPageProps {
   navigation: any;
@@ -20,6 +22,7 @@ interface LoginPageProps {
 const LoginPage: React.FC<LoginPageProps> = ({navigation}) => {
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
+  const [showPassword, setShowPassword] = React.useState(false);
 
   const passwordRef = useRef(null);
 
@@ -55,10 +58,10 @@ const LoginPage: React.FC<LoginPageProps> = ({navigation}) => {
             ref={passwordRef}
             placeholder="Password"
             placeholderTextColor="#A2A4A3"
-            secureTextEntry
+            secureTextEntry={!showPassword}
             textContentType="password"
             autoComplete="url"
-            style={styles.textInput}
+            style={[styles.textInput, {paddingRight: 40}]}
             onChangeText={setPassword}
             value={password}
             autoCapitalize="none"
@@ -66,6 +69,14 @@ const LoginPage: React.FC<LoginPageProps> = ({navigation}) => {
             returnKeyType="done"
             onSubmitEditing={handleLogin}
           />
+          <TouchableOpacity
+            style={styles.eyeIcon}
+            onPress={() => setShowPassword(!showPassword)}>
+            <Image
+              source={showPassword ? eyeSlashIcon : eyeIcon}
+              style={{width: 20, height: 20}}
+            />
+          </TouchableOpacity>
         </View>
         <TouchableOpacity style={styles.button} onPress={handleLogin}>
           <Text style={styles.buttonText}>Log In</Text>
@@ -106,6 +117,11 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     fontSize: 16,
     fontWeight: 'bold',
+  },
+  eyeIcon: {
+    position: 'absolute',
+    right: 15,
+    top: 15,
   },
 });
 
