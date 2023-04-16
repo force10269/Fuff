@@ -29,13 +29,13 @@ const QRCodeButton: React.FC<QRCodeButtonProps> = ({
     <TouchableOpacity
       onPress={() => navigate('QR Code Overlay')}
       style={[styles(onHomePage).qrButton, {zIndex}]}>
-      <View style={styles().qrContainer}>
+      <View style={styles(onHomePage).qrContainer}>
         <Image
           source={require('./assets/qr-code-icon.png')}
-          style={styles().qrIcon}
+          style={styles(onHomePage).qrIcon}
         />
       </View>
-      <Text style={styles().qrLabel}>Member ID</Text>
+      <Text style={styles(onHomePage).qrLabel}>Member ID</Text>
     </TouchableOpacity>
   );
 };
@@ -46,8 +46,8 @@ const styles = (onHomePage: Boolean = false) =>
       position: 'absolute',
       bottom: onHomePage ? 30 : 80,
       right: 20,
-      width: 100,
-      height: 100,
+      width: onHomePage ? 100 : 65,
+      height: onHomePage ? 100 : 65,
       borderRadius: 35,
       backgroundColor: '#0275d8',
       justifyContent: 'center',
@@ -55,8 +55,8 @@ const styles = (onHomePage: Boolean = false) =>
       zIndex: 1,
     },
     qrIcon: {
-      width: 50,
-      height: 50,
+      width: onHomePage ? 50 : 25,
+      height: onHomePage ? 50 : 25,
       tintColor: 'black',
     },
     qrContainer: {
@@ -66,7 +66,7 @@ const styles = (onHomePage: Boolean = false) =>
     qrLabel: {
       marginTop: 4,
       color: 'black',
-      fontSize: 12,
+      fontSize: 8,
       fontWeight: 'bold',
     },
   });
