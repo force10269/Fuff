@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
+import HeroCarousel from './HeroCarousel';
 import {useNavigation} from '@react-navigation/native';
 import Menu from './Menu';
 import sampleClasses from './data/ClassesData';
