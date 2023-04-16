@@ -66,7 +66,7 @@ const styles = (onHomePage: Boolean = false) =>
     qrLabel: {
       marginTop: 4,
       color: 'black',
-      fontSize: 8,
+      fontSize: onHomePage ? 13 : 8,
       fontWeight: 'bold',
     },
   });

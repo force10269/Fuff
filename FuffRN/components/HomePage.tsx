@@ -65,10 +65,13 @@ const HomePage = () => {
       <View style={styles.headerContainer}>
         <Text style={styles.title}>f u f f</Text>
         <TouchableOpacity onPress={() => navigate('Account Page')}>
-          <Image
-            style={styles.userIcon}
-            source={require('./assets/user-icon.png')}
-          />
+          <View style={styles.userContainer}>
+            <Image
+              style={styles.userIcon}
+              source={require('./assets/user-icon.png')}
+            />
+            <Text style={styles.userLabel}>My Account</Text>
+          </View>
         </TouchableOpacity>
       </View>
       <View style={styles.alertBar}>
@@ -132,7 +135,7 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: '#CFB87C',
     width: '45%',
-    height: 170,
+    height: 160,
     borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center',
@@ -176,6 +179,16 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     marginTop: 5,
+  },
+  userContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  userLabel: {
+    marginTop: 4,
+    color: 'black',
+    fontSize: 8,
+    fontWeight: 'bold',
   },
 });
 
