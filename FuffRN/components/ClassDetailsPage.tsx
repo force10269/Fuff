@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import Menu from './Menu';
+import SignUpButton from './SignUpButton';
 
 const ClassDetailsPage = ({route}) => {
   const {classObj} = route.params;
@@ -18,6 +19,7 @@ const ClassDetailsPage = ({route}) => {
           <Text style={styles.time}>Time: {classObj.time}</Text>
           <Text style={styles.location}>Location: {classObj.location}</Text>
         </View>
+        <SignUpButton />
       </View>
     </>
   );

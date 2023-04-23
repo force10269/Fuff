@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import Menu from './Menu';
+import SignUpButton from './SignUpButton';
 
 const ActivityDetailsPage = ({route}) => {
   const {activity} = route.params;
@@ -14,6 +15,7 @@ const ActivityDetailsPage = ({route}) => {
           <Text style={styles.subtitle}>{activity.subtitle}</Text>
           <Text style={styles.type}>Type: {activity.type}</Text>
         </View>
+        <SignUpButton />
       </View>
     </>
   );
