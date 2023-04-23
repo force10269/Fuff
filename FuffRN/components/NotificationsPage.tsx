@@ -41,6 +41,7 @@ const NotificationsPage = (): JSX.Element => {
           />
           <PriorityNotification priority="low" notifications={NOTIFICATIONS} />
         </View>
+        <View style={styles.verticalFiller} />
       </ScrollView>
     </>
   );
@@ -98,6 +99,10 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '600',
     color: '#2f95dc',
+  },
+  verticalFiller: {
+    height: 150,
+    backgroundColor: '#fff',
   },
 });
 
