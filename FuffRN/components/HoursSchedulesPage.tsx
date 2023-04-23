@@ -18,7 +18,7 @@ type HoursSchedulesProps = {
 
 const Divider = () => {
   return <View style={styles.divider} />;
-}
+};
 
 const HoursSchedulesPage = ({navigation}: HoursSchedulesProps) => {
   const [selectedDate, setSelectedDate] = useState('');

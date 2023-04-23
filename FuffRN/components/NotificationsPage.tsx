@@ -3,6 +3,30 @@ import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import Menu from './Menu';
 import NOTIFICATIONS from './data/NotificationsData';
 
+const PriorityNotification: React.FC<{
+  priority: 'high' | 'medium' | 'low';
+  notifications: Notification[];
+}> = ({priority, notifications}) => {
+  const filteredNotifications = notifications.filter(
+    n => n.priority === priority,
+  );
+  if (filteredNotifications.length === 0) {
+    return null;
+  }
+
+  return (
+    <View style={styles.section}>
+      <Text style={styles.sectionTitle}>{priority.toUpperCase()} PRIORITY</Text>
+      {filteredNotifications.map(item => (
+        <View key={item.id} style={styles.notification}>
+          <Text style={styles.notificationTitle}>{item.title}</Text>
+          <Text style={styles.notificationMessage}>{item.message}</Text>
+        </View>
+      ))}
+    </View>
+  );
+};
+
 const NotificationsPage = (): JSX.Element => {
   return (
     <>
@@ -10,31 +34,12 @@ const NotificationsPage = (): JSX.Element => {
       <ScrollView style={styles.container}>
         <Text style={styles.title}>Notifications</Text>
         <View style={styles.content}>
-          <View style={styles.section}>
-            <Text style={styles.sectionTitle}>Important Announcements</Text>
-            {/*  */}
-            {NOTIFICATIONS.filter(n => n.type === 'alert').map(item => (
-              <View key={item.id} style={styles.notification}>
-                <Text style={styles.notificationTitle}>{item.title}</Text>
-                <Text style={styles.notificationMessage}>{item.message}</Text>
-              </View>
-            ))}
-            {NOTIFICATIONS.filter(n => n.type === 'alert').length === 0 && (
-              <Text style={styles.emptyMessage}>No alert notifications</Text>
-            )}
-          </View>
-          <View style={styles.section}>
-            <Text style={styles.sectionTitle}>Your Upcoming Classes</Text>
-            {NOTIFICATIONS.filter(n => n.type === 'message').map(item => (
-              <View key={item.id} style={styles.notification}>
-                <Text style={styles.notificationTitle}>{item.title}</Text>
-                <Text style={styles.notificationMessage}>{item.message}</Text>
-              </View>
-            ))}
-            {NOTIFICATIONS.filter(n => n.type === 'message').length === 0 && (
-              <Text style={styles.emptyMessage}>No registered classes</Text>
-            )}
-          </View>
+          <PriorityNotification priority="high" notifications={NOTIFICATIONS} />
+          <PriorityNotification
+            priority="medium"
+            notifications={NOTIFICATIONS}
+          />
+          <PriorityNotification priority="low" notifications={NOTIFICATIONS} />
         </View>
       </ScrollView>
     </>
@@ -64,6 +69,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '600',
     marginBottom: 10,
+    textAlign: 'center',
   },
   notification: {
     backgroundColor: '#fff',
