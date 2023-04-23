@@ -9,11 +9,16 @@ import {
 } from 'react-native';
 import {Calendar} from 'react-native-calendars';
 import Menu from './Menu';
+import WeeklyClasses from './WeeklyClasses';
 import sampleSchedule from './data/HoursScheduleData';
 
 type HoursSchedulesProps = {
   navigation: any;
 };
+
+const Divider = () => {
+  return <View style={styles.divider} />;
+}
 
 const HoursSchedulesPage = ({navigation}: HoursSchedulesProps) => {
   const [selectedDate, setSelectedDate] = useState('');
@@ -55,6 +60,13 @@ const HoursSchedulesPage = ({navigation}: HoursSchedulesProps) => {
             <Text style={styles.fullHoursButtonText}>View Full Hours</Text>
           </TouchableOpacity>
         </View>
+        <Divider />
+        <Text style={styles.weeksClassScheduleTitle}>
+          Week's Class Schedule
+        </Text>
+        <WeeklyClasses />
+        <Divider />
+        <Text style={styles.calendarTitle}>Events & Daily Hours</Text>
         <Calendar
           current={''}
           minDate={''}
@@ -157,6 +169,27 @@ const styles = StyleSheet.create({
   },
   eventTitle: {
     fontSize: 16,
+  },
+  weeksClassScheduleTitle: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginTop: 20,
+    marginBottom: 10,
+  },
+  calendarTitle: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginTop: 20,
+    marginBottom: 10,
+  },
+  divider: {
+    height: 1,
+    backgroundColor: '#CFB87C',
+    marginTop: 20,
+    marginBottom: 20,
+    marginHorizontal: 20,
   },
 });
 
