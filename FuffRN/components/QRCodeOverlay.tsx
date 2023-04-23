@@ -7,7 +7,10 @@ const QRCodeOverlay = (): JSX.Element => {
   return (
     <>
       <View style={styles.container}>
-        <Image source={require('./assets/buffalo-icon.png')} style={styles.logo} />
+        <Image
+          source={require('./assets/buffalo-icon.png')}
+          style={styles.logo}
+        />
         <Text style={styles.title}>Welcome to the Gym</Text>
         <Text style={styles.subtitle}>Please scan the code below to check in</Text>
         <View style={styles.qrContainer}>
@@ -35,6 +38,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#FFF',
+    marginTop: -100,
   },
   logo: {
     width: 100,
