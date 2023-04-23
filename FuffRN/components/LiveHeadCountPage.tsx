@@ -4,19 +4,11 @@ import Menu from './Menu';
 import sampleData from './data/LiveHeadCountData';
 
 const LiveHeadCountPage = () => {
-  const shades = [
-    '#d1f3d3',
-    '#b6e5b5',
-    '#9bd692',
-    '#7fb96f',
-    '#649c4b',
-    '#48802a',
-    '#2b6621',
-    '#17732e',
-    '#da3e3e',
-    '#da1f1f',
-    '#da0c0c',
-  ];
+  const getColorByProgress = (progress: number) => {
+    if (progress >= 75) return '#FF0000'; // Red
+    if (progress >= 50) return '#FFF200'; // Yellow
+    return '#4CBB17'; // Green
+  };
 
   return (
     <View style={styles.container}>
@@ -25,17 +17,17 @@ const LiveHeadCountPage = () => {
         <View style={styles.content}>
           <Text style={styles.title}>Live Headcount</Text>
           {sampleData.map(item => {
-            const progress = Math.min(Math.round(item.progress / 10), shades.length - 1);
-            const progressColor = shades[progress];
+            const progress = item.progress;
+            const progressColor = getColorByProgress(progress);
             return (
               <View key={item.id} style={styles.card}>
-                <Text style={styles.cardTitle}>{item.title}</Text>
+                <Text style={styles.cardTitle}>{item.title} - {progress}%</Text>
                 <View style={styles.progressBar}>
                   <View
                     style={[
                       styles.progressInner,
                       {backgroundColor: progressColor},
-                      {width: `${item.progress}%`},
+                      {width: `${progress}%`},
                     ]}
                   />
                 </View>
