@@ -12,6 +12,7 @@ const sampleSchedule = {
       {time: '9:00 AM', title: 'Zumba Class'},
       {time: '6:00 PM', title: 'Spinning Class'},
       {time: '7:00 PM', title: 'Weightlifting Class'},
+      {time: '8:00 PM', title: 'Yoga Class'},
     ],
   },
 };
