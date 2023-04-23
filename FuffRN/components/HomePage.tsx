@@ -19,8 +19,8 @@ const notificationsIcon = require('./assets/notifications-icon.png');
 const passesIcon = require('./assets/passes-icon.png');
 
 const screenWidth = Dimensions.get('window').width;
-const buttonWidthPercentage = 0.3;
-const buttonHeightPercentage = 0.27;
+const buttonWidthPercentage = 0.4;
+const buttonHeightPercentage = 0.4;
 const buttonWidth = screenWidth * buttonWidthPercentage;
 const buttonHeight = screenWidth * buttonHeightPercentage;
 
