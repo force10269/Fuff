@@ -30,6 +30,24 @@ const IntramuralsClubsPage: React.FC<Props> = () => {
     setSearch(text);
   };
 
+  const renderActivityCards = (type: string, category: string) => {
+    return activities
+      .filter(
+        activity => activity.type === type && activity.category === category,
+      )
+      .map(activity => (
+        <TouchableOpacity
+          key={activity.id}
+          style={styles.card}
+          onPress={() =>
+            navigation.navigate('Activity Details Page', {activity})
+          }>
+          <Text style={styles.cardTitle}>{activity.title}</Text>
+          <Text style={styles.cardSubtitle}>{activity.subtitle}</Text>
+        </TouchableOpacity>
+      ));
+  };
+
   return (
     <>
       <ScrollView style={styles.container}>
@@ -44,36 +62,27 @@ const IntramuralsClubsPage: React.FC<Props> = () => {
         />
         <Text style={styles.sectionTitle}>Ongoing</Text>
         <View style={styles.cardContainer}>
-          {activities
-            .filter(activity => activity.type === 'ongoing')
-            .map(activity => (
-              <TouchableOpacity
-                key={activity.id}
-                style={styles.card}
-                onPress={() =>
-                  navigation.navigate('Activity Details Page', {activity})
-                }>
-                <Text style={styles.cardTitle}>{activity.title}</Text>
-                <Text style={styles.cardSubtitle}>{activity.subtitle}</Text>
-              </TouchableOpacity>
-            ))}
+          <View style={styles.column}>
+            <Text style={styles.columnTitle}>Intramurals</Text>
+            {renderActivityCards('ongoing', 'intramural')}
+          </View>
+          <View style={styles.column}>
+            <Text style={styles.columnTitle}>Clubs</Text>
+            {renderActivityCards('ongoing', 'club')}
+          </View>
         </View>
         <Text style={styles.sectionTitle}>Upcoming</Text>
         <View style={styles.cardContainer}>
-          {activities
-            .filter(activity => activity.type === 'upcoming')
-            .map(activity => (
-              <TouchableOpacity
-                key={activity.id}
-                style={styles.card}
-                onPress={() =>
-                  navigation.navigate('Activity Details Page', {activity})
-                }>
-                <Text style={styles.cardTitle}>{activity.title}</Text>
-                <Text style={styles.cardSubtitle}>{activity.subtitle}</Text>
-              </TouchableOpacity>
-            ))}
+          <View style={styles.column}>
+            <Text style={styles.columnTitle}>Intramurals</Text>
+            {renderActivityCards('upcoming', 'intramural')}
+          </View>
+          <View style={styles.column}>
+            <Text style={styles.columnTitle}>Clubs</Text>
+            {renderActivityCards('upcoming', 'club')}
+          </View>
         </View>
+        <View style={styles.verticalFiller} />
       </ScrollView>
       <Menu />
     </>
@@ -84,6 +93,10 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fff',
     padding: 20,
+  },
+  verticalFiller: {
+    height: 150,
+    backgroundColor: '#fff',
   },
   searchBarInput: {
     backgroundColor: '#f2f2f2',
@@ -99,9 +112,21 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   cardContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'flex-start',
+    marginVertical: 10,
+  },
+  column: {
+    flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    marginVertical: 10,
+    paddingHorizontal: 5,
+  },
+  columnTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 10,
   },
   card: {
     backgroundColor: '#f2f2f2',
