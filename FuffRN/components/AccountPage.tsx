@@ -23,7 +23,7 @@ const AccountPage = (): JSX.Element => {
           <View style={styles.content}>
             <View style={styles.row}>
               <Text style={styles.label}>IdentiKey:</Text>
-              <Text style={styles.info}>dojo1234</Text>
+              <Text style={styles.info}>chip1234</Text>
             </View>
             <View style={styles.row}>
               <Text style={styles.label}>Email:</Text>
