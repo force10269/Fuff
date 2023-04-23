@@ -58,7 +58,9 @@ const Menu = (): JSX.Element => {
           <View style={styles(isMenuOpen).bottomRectangle} />
         </View>
         {isMenuOpen && (
-          <View style={styles(isMenuOpen).menuItemsContainer}>{renderMenuItems()}</View>
+          <View style={styles(isMenuOpen).menuItemsContainer}>
+            {renderMenuItems()}
+          </View>
         )}
       </View>
     </>

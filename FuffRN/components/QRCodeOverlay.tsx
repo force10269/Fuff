@@ -12,7 +12,9 @@ const QRCodeOverlay = (): JSX.Element => {
           style={styles.logo}
         />
         <Text style={styles.title}>Welcome to the Gym</Text>
-        <Text style={styles.subtitle}>Please scan the code below to check in</Text>
+        <Text style={styles.subtitle}>
+          Please scan the code below to check in
+        </Text>
         <View style={styles.qrContainer}>
           <QRCode
             value="sample"

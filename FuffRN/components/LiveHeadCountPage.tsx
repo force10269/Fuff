@@ -5,8 +5,12 @@ import sampleData from './data/LiveHeadCountData';
 
 const LiveHeadCountPage = () => {
   const getColorByProgress = (progress: number) => {
-    if (progress >= 75) return '#FF0000'; // Red
-    if (progress >= 50) return '#FFF200'; // Yellow
+    if (progress >= 75) {
+      return '#FF0000';
+    } // Red
+    if (progress >= 50) {
+      return '#FFF200';
+    } // Yellow
     return '#4CBB17'; // Green
   };
 
@@ -21,7 +25,9 @@ const LiveHeadCountPage = () => {
             const progressColor = getColorByProgress(progress);
             return (
               <View key={item.id} style={styles.card}>
-                <Text style={styles.cardTitle}>{item.title} - {progress}%</Text>
+                <Text style={styles.cardTitle}>
+                  {item.title} - {progress}%
+                </Text>
                 <View style={styles.progressBar}>
                   <View
                     style={[
