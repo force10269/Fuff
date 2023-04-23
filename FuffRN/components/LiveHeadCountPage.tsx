@@ -15,7 +15,13 @@ const LiveHeadCountPage = () => {
               <Text style={styles.cardTitle}>{item.title}</Text>
               <View style={styles.progressBar}>
                 <View
-                  style={[styles.progressInner, {width: `${item.progress}%`}]}
+                  style={[
+                    styles.progressInner,
+                    item.progress <= 50 && styles.progressInnerGreen,
+                    item.progress > 50 && item.progress < 75 && styles.progressInnerYellow,
+                    item.progress >= 75 && styles.progressInnerRed,
+                    {width: `${item.progress}%`},
+                  ]}
                 />
               </View>
             </View>
@@ -58,11 +64,16 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   progressInner: {
-    backgroundColor: '#FFD166',
     height: 20,
   },
-  paddingBottom: {
-    paddingBottom: 150,
+  progressInnerGreen: {
+    backgroundColor: '#aadadc',
+  },
+  progressInnerYellow: {
+    backgroundColor: '#f1fa8c',
+  },
+  progressInnerRed: {
+    backgroundColor: '#e63946',
   },
 });
 
