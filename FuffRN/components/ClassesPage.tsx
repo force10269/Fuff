@@ -62,6 +62,7 @@ const ClassesPage = (): JSX.Element => {
           </TouchableOpacity>
         ))}
       </ScrollView>
+      <View style={styles.verticalFill} />
     </View>
   );
 };
@@ -71,7 +72,10 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: 20,
     paddingVertical: 10,
-    paddingBottom: 150,
+    backgroundColor: 'white',
+  },
+  verticalFill: {
+    height: 150,
     backgroundColor: 'white',
   },
   searchBarContainer: {
