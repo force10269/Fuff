@@ -1,5 +1,12 @@
 import React from 'react';
-import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  Image,
+  Dimensions,
+} from 'react-native';
 import QRCodeButton from './QRCodeButton';
 import {useNavigation} from '@react-navigation/native';
 import HeroCarousel from './HeroCarousel';
@@ -10,6 +17,12 @@ const hoursIcon = require('./assets/hours-icon.png');
 const headcountIcon = require('./assets/headcount-icon.png');
 const notificationsIcon = require('./assets/notifications-icon.png');
 const passesIcon = require('./assets/passes-icon.png');
+
+const screenWidth = Dimensions.get('window').width;
+const buttonWidthPercentage = 0.3;
+const buttonHeightPercentage = 0.27;
+const buttonWidth = screenWidth * buttonWidthPercentage;
+const buttonHeight = screenWidth * buttonHeightPercentage;
 
 const HomePage = () => {
   const {navigate} = useNavigation();
@@ -134,8 +147,8 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: '#CFB87C',
-    width: '45%',
-    height: 160,
+    width: buttonWidth,
+    height: buttonHeight,
     borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center',
