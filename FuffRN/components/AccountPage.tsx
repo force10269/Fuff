@@ -35,7 +35,7 @@ const AccountPage = (): JSX.Element => {
             </View>
             <View style={styles.row}>
               <Text style={styles.label}>Date Joined:</Text>
-              <Text style={styles.info}>January 1, 2022</Text>
+              <Text style={styles.info}>January 1, 2023</Text>
             </View>
             <View style={styles.buttonContainer}>
               <Text style={styles.buttonText}>Edit Profile</Text>
